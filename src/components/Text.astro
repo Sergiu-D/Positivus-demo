@@ -3,36 +3,51 @@ import { cn } from "@/lib/utils";
 
 export interface Props {
   /** Typography variant */
-  variant?: "h1" | "h2" | "h3" | "p";
+  variant: "h1" | "h2" | "h3" | "p";
+  highlight?: "green" | "white" | "none";
   /** Additional CSS classes */
   class?: string;
 }
 
-const { variant = "p", class: className, ...attrs } = Astro.props;
+const {
+  variant = "p",
+  highlight = "none",
+  class: className,
+  ...attrs
+} = Astro.props;
 
 const variants = {
   h1: {
     tag: "h1",
-    class: "text-mobile-h1 lg:text-h1 text-primary font-body",
+    class: "text-mobile-h1 lg:text-h1 leading-[1.2]",
   },
   h2: {
     tag: "h2",
-    class: "text-mobile-h2 lg:text-h2 text-primary font-body",
+    class: "text-mobile-h2 lg:text-h2 leading-[1.2]",
   },
   h3: {
     tag: "h3",
-    class: "text-mobile-h3 lg:text-h3 text-primary font-body",
+    class: "text-mobile-h3 lg:text-h3 leading-[1.2]",
   },
 
   p: {
     tag: "p",
-    class: "text-mobile-p lg:text-p text-primary font-body",
+    class: "text-mobile-p lg:text-p ",
   },
+};
+
+const highlights = {
+  green: "bg-secondary text-primary rounded-xl px-2",
+  white: "bg-white text-primary rounded-xl px-2",
+  none: "",
 };
 
 const Tag = variants[variant].tag as keyof HTMLElementTagNameMap;
 ---
 
-<Tag class={cn(variants[variant].class, className)} {...attrs}>
+<Tag
+  class={cn(variants[variant].class, highlights[highlight], className)}
+  {...attrs}
+>
   <slot />
 </Tag>
