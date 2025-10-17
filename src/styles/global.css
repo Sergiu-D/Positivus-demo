@@ -7,6 +7,7 @@
   --cl-primary: oklch(0.2690 0 0);
   --cl-secondary: oklch(0.9237 0.1959 130.2276);
   --cl-accent: oklch(0.9642 0 0);
+  --cl-white: oklch(1 0 0);
   /* desktop */
   --font-size-h1: 3.75rem; /* 60px */
   --font-size-h2: 2.5rem;  /* 40px */
@@ -25,6 +26,7 @@
   --color-primary: var(--cl-primary);
   --color-secondary: var(--cl-secondary);
   --color-accent: var(--cl-accent);
+  --color-white: var(--cl-white);
   /* headers desktop */
   --text-h1: var(--font-size-h1);
   --text-h2: var(--font-size-h2);
@@ -35,4 +37,50 @@
   --text-mobile-h2: var(--font-size-mob-h2);
   --text-mobile-h3: var(--font-size-mob-h3);
   --text-mobile-p: var(--font-size-mob-p);
+}
+
+@utility btn-outlined {
+  cursor: pointer;
+    display: block;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  
+    background: linear-gradient(to right, var(--cl-secondary) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+  
+    &:hover {
+      color: var(--cl-primary);
+      background-position: left bottom;
+    }
+}
+@utility btn-default {
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  background: linear-gradient(to right, var(--cl-secondary) 50%, var(--cl-primary) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  
+  &:hover {
+    color: var(--cl-primary);
+    background-position: left bottom;
+  }
+}
+@utility btn-secondary {
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  background: linear-gradient(to right, var(--cl-primary) 50%, var(--cl-secondary) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+
+  &:hover {
+    color: var(--cl-white);
+    background-position: left bottom;
+  }
 }
