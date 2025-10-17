@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export interface Props {
   /** Button style variant */
-  variant?: "default" | "secondary";
+  variant?: "default" | "secondary" | "outlined";
   /** Button size */
   size?: "fit" | "full";
   /** Additional CSS classes */
@@ -17,20 +17,17 @@ const {
   ...attrs
 } = Astro.props;
 
-type ButtonVariants = {
-  default: string;
-  secondary: string;
-}
-
-const variants: ButtonVariants = {
-  default: "bg-primary text-white",
-  secondary: "bg-secondary text-white",
+const variants = {
+  default: "bg-primary text-white rounded-xl btn-default",
+  secondary: "bg-secondary text-primary rounded-xl btn-secondary",
+  outlined:
+    "bg-transparent text-primary border border-primary rounded-xl btn-outlined",
 };
 
 const sizes = {
-	fit: "px-4 py-2 w-fit",
-	full: "px-4 py-2 w-full",
-}
+  fit: "px-5 py-3 w-fit",
+  full: "px-5 py-3 w-full",
+};
 ---
 
 <button class={cn(variants[variant], sizes[size], className)} {...attrs}>
