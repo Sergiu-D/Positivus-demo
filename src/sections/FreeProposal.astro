@@ -1,0 +1,22 @@
+---
+import Image from "astro/components/Image.astro";
+import Wrapper from "@/components/ui/Wrapper.astro";
+import Text from "@/components/ui/Text.astro";
+import Link from "@/components/ui/Link.astro";
+import CTAIlustration from "@/assets/cta-Illustration.svg"
+---
+
+<section>
+    <Wrapper class="flex flex-col md:flex-row justify-between items-center gap-5 xl:gap-60">
+        <div class="flex flex-1 flex-col justify-center items-center md:items-start gap-8">
+            <Text variant="h2" class="text-center md:text-left"
+                >Free proposal</Text
+            >
+            <Text variant="p" class="text-center md:text-left">
+                Get a free proposal from one of our expert marketers. We'll help you understand your business and create a customized plan to achieve your goals.
+            </Text>
+            <Link href="#contact-us" class="w-full md:w-fit flex justify-center">Request a quote</Link>
+        </div>
+            <Image src={CTAIlustration} alt="Free proposal" width={400} class="hidden md:block"/>
+    </Wrapper>
+</section>
