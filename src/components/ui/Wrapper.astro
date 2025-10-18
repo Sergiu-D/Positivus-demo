@@ -3,9 +3,10 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   variant?: "light" | "dark";
+  class?: string;
 };
 
-const { variant = "light" } = Astro.props;
+const { variant = "light", class: className } = Astro.props;
 
 const variants = {
   light: "bg-accent text-dark",
@@ -13,6 +14,6 @@ const variants = {
 };
 ---
 
-<section class={cn(variants[variant], "p-16 rounded-[45px]")}>
+<section class={cn(variants[variant],  className, "p-16 rounded-[45px]")}>
   <slot />
 </section>
