@@ -2,6 +2,8 @@
 import "@/styles/global.css";
 import Link from "@/components/Link.astro";
 import Text from "@/components/Text.astro";
+import Card from "@/components/Card.astro";
+import Wrapper from "@/components/Wrapper.astro";
 ---
 
 <html lang="en">
@@ -54,6 +56,41 @@ import Text from "@/components/Text.astro";
           >
           <Link variant="ghostSecondary" color="main">Ghost Secondary Main</Link
           >
+        </div>
+      </div>
+      <div class="flex flex-col items-center gap-5 bg-blue-200 p-5 rounded-xl">
+        <span>Cards</span>
+        <div class="flex gap-2">
+          <Card variant="light">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum
+            recusandae cumque deleniti reiciendis distinctio molestias magnam
+            repellat suscipit nemo consequatur commodi maiores, unde asperiores
+            repudiandae fuga aut alias expedita mollitia?
+          </Card>
+          <Card variant="dark">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum
+            recusandae cumque deleniti reiciendis distinctio molestias magnam
+            repellat suscipit nemo consequatur commodi maiores, unde asperiores
+            repudiandae fuga aut alias expedita mollitia?
+          </Card>
+          <Card variant="green">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum
+            recusandae cumque deleniti reiciendis distinctio molestias magnam
+            repellat suscipit nemo consequatur commodi maiores, unde asperiores
+            repudiandae fuga aut alias expedita mollitia?
+          </Card>
+        </div>
+      </div>
+      <div class="flex flex-col gap-10 items-center bg-blue-200 p-5 rounded-xl">
+        <span>Wrappers</span>
+
+        <div class="flex gap-10">
+          <Wrapper variant="light">
+            <Text variant="h1">This is a h1</Text>
+          </Wrapper>
+          <Wrapper variant="dark">
+            <Text variant="h1">This is a h1</Text>
+          </Wrapper>
         </div>
       </div>
     </div>
