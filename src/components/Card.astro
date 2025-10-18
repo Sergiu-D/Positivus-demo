@@ -2,11 +2,12 @@
 import { cn } from "@/lib/utils";
 
 type Props = {
-  variant?: "light" | "dark" | "green";
+  variant?: "white" | "light" | "dark" | "green";
 };
 const { variant = "light" } = Astro.props;
 
 const variants = {
+  white: "bg-white text-dark",
   light: "bg-accent text-dark",
   dark: "bg-primary text-white",
   green: "bg-secondary text-black",
