@@ -1,52 +1,124 @@
 ---
-
+import Logo from '@/assets/logo.svg';
+import Link from '@/components/ui/Link.astro';
+// Navigation links array
+const navigationLinks = [
+  { name: 'Services', href: '#services' },
+  { name: 'Case Studies', href: '#case-studies' },
+  { name: 'Our Work Process', href: '#work-process' },
+  { name: 'Team', href: '#team' },
+  { name: 'Contact Us', href: '#contact-us' }
+];
 ---
 
-<nav
-  class="navbar rounded-box flex w-full items-center justify-between gap-2 shadow-base-300/20 shadow-sm"
->
-  <div class="navbar-start max-md:w-1/4">
-    <a
-      class="link text-base-content link-neutral text-xl font-bold no-underline"
-      href="#"
-    >
-      FlyonUI
-    </a>
-  </div>
-  <div class="navbar-center max-md:hidden">
-    <ul class="menu menu-horizontal p-0 font-medium">
-      <li><a href="#">Link 1</a></li>
-      <li><a href="#">Link 2</a></li>
-      <li><a href="#">Link 3</a></li>
-    </ul>
-  </div>
-  <div class="navbar-end items-center gap-4">
-    <div class="dropdown relative inline-flex md:hidden">
-      <button
-        id="dropdown-default"
-        type="button"
-        class="dropdown-toggle btn btn-text btn-secondary btn-square"
-        aria-haspopup="menu"
-        aria-expanded="false"
-        aria-label="Dropdown"
-      >
-        <span class="icon-[tabler--menu-2] dropdown-open:hidden size-5"></span>
-        <span class="icon-[tabler--x] dropdown-open:block hidden size-5"></span>
-      </button>
-      <ul
-        class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60"
-        role="menu"
-        aria-orientation="vertical"
-        aria-labelledby="dropdown-default"
-      >
-        <li><a class="dropdown-item" href="#">Link 1</a></li>
-        <li><a class="dropdown-item" href="#">Link 2</a></li>
-        <li><a class="dropdown-item" href="#">Link 3</a></li>
-      </ul>
+<nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="#" class="flex items-center space-x-2">
+          <Logo class="w-25 h-12" />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="gap-0 lg:gap-3 flex items-baseline space-x-8">
+          {navigationLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-gray-900 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors duration-200 m-0"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Request Quote Button & Mobile Menu Button -->
+      <div class="flex items-center space-x-4">
+        <!-- Request Quote Button -->
+    
+          <Link href="#contact" variant="outlined">Request a quote</Link>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button
+            type="button"
+            class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <!-- Hamburger icon -->
+            <svg class="hamburger-icon block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- Close icon -->
+            <svg class="close-icon hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
-    <a class="btn max-md:btn-square btn-primary" href="#">
-      <span class="max-md:hidden">Get started</span>
-      <span class="icon-[tabler--arrow-right] rtl:rotate-180"></span>
-    </a>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu hidden md:hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+      {navigationLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-gray-900 hover:text-green-600 block px-3 py-2 text-base font-medium transition-colors duration-200"
+        >
+          {link.name}
+        </a>
+      ))}
+      <!-- Mobile Request Quote Button -->
+      <a
+        href="#contact"
+        class="block w-full text-center mt-4 px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+      >
+        Request a quote
+      </a>
+    </div>
   </div>
 </nav>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    const closeIcon = document.querySelector('.close-icon');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle menu visibility
+        mobileMenu.classList.toggle('hidden');
+        
+        // Toggle icons
+        hamburgerIcon?.classList.toggle('hidden');
+        closeIcon?.classList.toggle('hidden');
+        
+        // Update aria-expanded
+        mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+      });
+
+      // Close mobile menu when clicking on a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+</script>
