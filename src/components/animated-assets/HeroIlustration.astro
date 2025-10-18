@@ -1,0 +1,145 @@
+---
+import "@/styles/global.css";
+import HeroSvg from "@/assets/Hero.svg";
+---
+
+<HeroSvg />
+
+<script>
+  import { animate, inView } from "motion";
+  // Hero SVG
+  const heroSvg = document.querySelector("#hero-svg");
+
+  const likeAnimation: any = {
+    position: { y: -10 },
+    transition: {
+      type: "linear",
+      ease: [0.2, 0.7, 0.7, 0.2],
+      duration: 2,
+      bounce: 0.1,
+      repeatType: "reverse",
+      repeat: Infinity,
+    },
+  };
+  const shareAnimation: any = {
+    position: { y: -20, x: 10 },
+    transition: {
+      type: "linear",
+      duration: 1.5,
+      bounce: 0.1,
+      repeatType: "reverse",
+      repeat: Infinity,
+    },
+  };
+  const playAnimation: any = {
+    position: { y: -10, x: 20, baseFrequency: 0.8 },
+    transition: {
+      type: "linear",
+      duration: 2.5,
+      bounce: 0.5,
+      repeatType: "reverse",
+      repeat: Infinity,
+    },
+  };
+  const locationAnimation: any = {
+    position: { y: 20, x: 30 },
+    transition: {
+      type: "spring",
+      duration: 2,
+      bounce: 0.1,
+      repeatType: "reverse",
+      repeat: Infinity,
+    },
+  };
+  const starBigAnimation: any = {
+    position: { rotate: 360 },
+    transition: {
+      type: "linear",
+      duration: 45,
+      repeatType: "loop",
+      repeat: Infinity,
+    },
+  };
+  const starSmallAnimation: any = {
+    position: { rotate: -360 },
+    transition: {
+      type: "linear",
+      duration: 30,
+      repeatType: "loop",
+      repeat: Infinity,
+    },
+  };
+
+  if (!heroSvg) throw new Error("Hero SVG not found");
+  inView(heroSvg, (el) => {
+    // Like elements
+    const likeWrapper = el.querySelector(".like-wrapper");
+    const likeIcon = el.querySelector(".like-icon");
+    // Share elements
+    const shareBorder = el.querySelector(".share");
+    const shareWrapper = el.querySelector(".share-wrapper");
+    const shareIcon = el.querySelector(".share-icon");
+    // Play elements
+    const playWrapper = el.querySelector(".play-wrapper");
+    const playIcon = el.querySelector(".play-icon");
+    // Location elements
+    const location = el.querySelector(".location");
+    const locationWrapper = el.querySelector(".location-wrapper");
+    const locationIcon = el.querySelector(".location-icon");
+    const locationIconCircle = el.querySelector(".location-icon-circle");
+    // Stars elements
+    const starBig = el.querySelector(".star-big");
+    const starSmall = el.querySelector(".star-small");
+
+    if (
+      !likeWrapper ||
+      !likeIcon ||
+      !shareBorder ||
+      !shareWrapper ||
+      !shareIcon ||
+      !playWrapper ||
+      !playIcon ||
+      !locationIcon ||
+      !locationIconCircle ||
+      !location ||
+      !locationWrapper ||
+      !starBig ||
+      !starSmall
+    )
+      throw new Error("One or more animated elements not found");
+    // First animation
+    animate(likeWrapper, likeAnimation.position, likeAnimation.transition);
+    animate(likeIcon, likeAnimation.position, likeAnimation.transition);
+    // Share animation
+    animate(shareBorder, shareAnimation.position, shareAnimation.transition);
+    animate(shareWrapper, shareAnimation.position, shareAnimation.transition);
+    animate(shareIcon, shareAnimation.position, shareAnimation.transition);
+    // Play animation
+    animate(playWrapper, playAnimation.position, playAnimation.transition);
+    animate(playIcon, playAnimation.position, playAnimation.transition);
+    // Location animation
+    animate(
+      locationWrapper,
+      locationAnimation.position,
+      locationAnimation.transition
+    );
+    animate(location, locationAnimation.position, locationAnimation.transition);
+    animate(
+      locationIcon,
+      locationAnimation.position,
+      locationAnimation.transition
+    );
+    animate(
+      locationIconCircle,
+      locationAnimation.position,
+      locationAnimation.transition
+    );
+    // Stars animation
+    animate(starBig, starBigAnimation.position, starBigAnimation.transition);
+    animate(
+      starSmall,
+      starSmallAnimation.position,
+      starSmallAnimation.transition
+    );
+  });
+</script>
