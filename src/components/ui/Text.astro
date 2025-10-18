@@ -46,7 +46,7 @@ const Tag = variants[variant].tag as keyof HTMLElementTagNameMap;
 ---
 
 <Tag
-  class={cn(variants[variant].class, highlights[highlight], className)}
+  class={cn(variants[variant].class, highlights[highlight], className, "w-fit h-fit mx-auto md:mx-0")}
   {...attrs}
 >
   <slot />
