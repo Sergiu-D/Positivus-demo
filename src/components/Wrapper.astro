@@ -1,0 +1,18 @@
+---
+import { cn } from "@/lib/utils";
+
+type Props = {
+  variant?: "light" | "dark";
+};
+
+const { variant = "light" } = Astro.props;
+
+const variants = {
+  light: "bg-accent text-dark",
+  dark: "bg-primary text-white",
+};
+---
+
+<section class={cn(variants[variant], "p-16 rounded-[45px]")}>
+  <slot />
+</section>
