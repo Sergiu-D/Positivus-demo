@@ -69,14 +69,12 @@
 }
 @utility btn-secondary {
   cursor: pointer;
-  display: block;
-  overflow: hidden;
   transition: all 0.3s ease;
 
   background: linear-gradient(to right, var(--cl-primary) 50%, var(--cl-secondary) 50%);
-  background-size: 200% 100%;
+  background-size: 200.2% 100%;
   background-position: right bottom;
-
+  
   &:hover {
     color: var(--cl-white);
     background-position: left bottom;
