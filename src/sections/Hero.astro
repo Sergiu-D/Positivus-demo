@@ -1,0 +1,82 @@
+---
+import Image from "astro/components/Image.astro";
+import Text from "@/components/ui/Text.astro";
+import Link from "@/components/ui/Link.astro";
+import HeroIlustration from "@/components/animated-assets/HeroIlustration.astro";
+// Brand icons
+import brand1 from "@/assets/brands/Company logo-1.png";
+import brand2 from "@/assets/brands/Company logo-2.png";
+import brand3 from "@/assets/brands/Company logo-3.png";
+import brand4 from "@/assets/brands/Company logo-4.png";
+import brand5 from "@/assets/brands/Company logo-5.png";
+import brand6 from "@/assets/brands/Company logo.png";
+
+const brandIcons = [
+  {
+    src: brand1,
+    alt: "Brand 1",
+  },
+  {
+    src: brand2,
+    alt: "Brand 2",
+  },
+  {
+    src: brand3,
+    alt: "Brand 3",
+  },
+  {
+    src: brand4,
+    alt: "Brand 4",
+  },
+  {
+    src: brand5,
+    alt: "Brand 5",
+  },
+  {
+    src: brand6,
+    alt: "Brand 6",
+  },
+];
+---
+
+<section>
+  <div>
+    <!-- CTA & Ilustration -->
+    <div class="flex flex-col md:flex-row">
+      <div
+        class="flex flex-1 flex-col justify-center items-center md:items-start gap-8"
+      >
+        <Text variant="h1" class="text-center md:text-left"
+          >Navigating the digital landscape for success</Text
+        >
+        <Text variant="p" class="text-center md:text-left">
+          Our digital marketing agency helps businesses grow and succeed online
+          through a range of services including SEO, PPC, social media
+          marketing, and content creation.
+        </Text>
+        <Link href="#contact-us" class="w-full md:w-fit flex justify-center"
+          >Request a quote</Link
+        >
+      </div>
+      <div class="flex-1 pt-3">
+        <HeroIlustration width="100%" />
+      </div>
+    </div>
+    <!-- Brands -->
+    <div class="flex flex-wrap justify-between">
+      {
+        brandIcons.map((brand) => (
+          <Image
+            src={brand.src}
+            alt={brand.alt}
+            width={130}
+            height={50}
+            layout="full-width"
+            format="png"
+            class="inline-block"
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
