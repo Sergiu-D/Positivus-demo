@@ -1,0 +1,67 @@
+---
+import { cn } from "@/lib/utils";
+import ArrowIcon from "@/assets/arrow.svg";
+
+export interface Props {
+  variant?:
+    | "default"
+    | "secondary"
+    | "outlined"
+    | "ghostPrimary"
+    | "ghostSecondary";
+
+  color?: "dark" | "white" | "main";
+  /** Button size */
+  size?: "fit" | "full";
+  /** Additional CSS classes */
+  class?: string;
+}
+
+const {
+  variant = "default",
+  color = "dark",
+  size = "fit",
+  class: className,
+  ...attrs
+} = Astro.props as Props;
+
+const variants = {
+  default: "bg-primary flex items-center text-white rounded-xl btn-default",
+  secondary:
+    "bg-secondary flex items-center text-primary rounded-xl btn-secondary",
+  outlined:
+    "bg-transparent flex items-center text-primary border border-primary rounded-xl btn-outlined",
+  ghostPrimary: {
+    dark: "bg-transparent flex items-center justify-center gap-2 text-mob-p lg:text-p btn-ghost [&_svg]:fill-primary [&_.iconBg]:bg-secondary [&_.iconBg]:p-2 [&_.iconBg]:rounded-full",
+    white:
+      "bg-transparent flex items-center justify-center gap-2 text-mob-p lg:text-p btn-ghost fill-primary [&_svg]:bg-white [&_svg]:p-4 [&_svg]:rounded-full",
+  },
+  ghostSecondary: {
+    main: "bg-transparent flex items-center justify-center flex-row-reverse text-secondary [&_svg]:fill-secondary btn-ghost",
+    dark: "bg-transparent flex items-center justify-center flex-row-reverse text-primary [&_svg]:fill-primary btn-ghost",
+    white:
+      "bg-transparent flex items-center justify-center flex-row-reverse text-white [&_svg]:fill-white btn-ghost",
+  },
+};
+
+const sizes = {
+  fit: "px-5 py-3 w-fit",
+  full: "px-5 py-3 w-full",
+};
+
+const variantsClasses =
+  variant === "default" || variant === "secondary" || variant === "outlined"
+    ? variants[variant]
+    : variants[variant][color];
+---
+
+<a class={cn(variantsClasses, sizes[size], className)} {...attrs}>
+  {
+    (variant === "ghostPrimary" || variant === "ghostSecondary") && (
+      <div class="iconBg">
+        <ArrowIcon class="w-4 h-4" />
+      </div>
+    )
+  }
+  <slot />
+</a>
