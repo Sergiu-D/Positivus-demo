@@ -1,10 +1,151 @@
 ---
+import Image from "astro/components/Image.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
+import Card from "@/components/ui/Card.astro";
+import Text from "@/components/ui/Text.astro";
+import Link from "@/components/ui/Link.astro";
+// Images
+import AnaliticsImage from "@/assets/analitycs.png";
+import ContentCreationImage from "@/assets/content-creation.png";
+import EmailMarketingImage from "@/assets/email-marketing.png";
+import SocialMediaManagementImage from "@/assets/social-media.png";
+import SeoImage from "@/assets/seo.png";
+import PayPerClickImage from "@/assets/pay-per-click.png";
+
+type Cards = {
+    cardVariant: "white" | "light" | "dark" | "green";
+    title: {
+        variant: "h3";
+        highlight: "green" | "white";
+        text: string;
+    };
+    image: any;
+    link: {
+        href: string;
+        text: string;
+        variant: "ghostPrimary";
+        color?: "dark" | "white";
+    };
+}[]
+const cards: Cards = [
+  {
+    cardVariant: "light",
+    title: {
+      variant: "h3",
+      highlight: "green",
+      text: "Search engine <br/> optimization",
+    },
+    image: SeoImage,
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostPrimary",
+      color: "dark",
+    },
+  },
+  {
+    cardVariant: "green",
+    title: {
+      variant: "h3",
+      highlight: "white",
+      text: "Pay-per-click <br/> advertising",
+    },
+    image: PayPerClickImage,
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostPrimary",
+      color: "white",
+    },
+  },
+  {
+    cardVariant: "dark",
+    title: {
+      variant: "h3",
+      highlight: "white",
+      text: "Social Media <br/> marketing",
+    },
+    image: SocialMediaManagementImage,
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostPrimary",
+      color: "white",
+    },
+  },
+  {
+    cardVariant: "light",
+    title: {
+      variant: "h3",
+      highlight: "green",
+      text: "Email <br/> marketing",
+    },
+    image: EmailMarketingImage,
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostPrimary",
+      color: "dark",
+    },
+  },
+  {
+    cardVariant: "green",
+    title: {
+      variant: "h3",
+      highlight: "white",
+      text: "Content <br/> creation",
+    },
+    image: ContentCreationImage,
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostPrimary",
+      color: "white",
+    },
+  },
+  {
+    cardVariant: "dark",
+    title: {
+      variant: "h3",
+      highlight: "green",
+      text: "Analytics and <br/> Tracking",
+    },
+    image: AnaliticsImage,
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostPrimary",
+      color: "white",
+    },
+  },
+];
 ---
 
-<section>
+<section class="flex flex-col gap-10">
   <SectionHeader
     title="Services"
     paragraph="At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:"
   />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    {
+      cards.map((card) => (
+        <Card variant={`${card.cardVariant}`} class="flex justify-between gap-3">
+          <div class="flex flex-col justify-between">
+            <Text variant={card.title.variant} highlight={card.title.highlight}>
+              <Fragment set:html={card.title.text} />
+            </Text>
+            <Link
+              href={card.link.href}
+              variant={card.link.variant}
+              color={card.link.color}
+              class="!p-0"
+            >
+              {card.link.text}
+            </Link>
+          </div>
+          <Image src={card.image} alt={card.title.text} width={210} height={170} />
+        </Card>
+      ))
+    }
+  </div>
 </section>
