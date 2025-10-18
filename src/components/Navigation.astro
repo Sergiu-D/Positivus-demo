@@ -11,7 +11,7 @@ const navigationLinks = [
 ];
 ---
 
-<nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+<nav id="navbar" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
@@ -87,13 +87,27 @@ const navigationLinks = [
 </nav>
 
 <script>
-  // Mobile menu toggle functionality
+  // Mobile menu toggle functionality and scroll shadow effect
   document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.getElementById('navbar');
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const mobileMenu = document.querySelector('.mobile-menu');
     const hamburgerIcon = document.querySelector('.hamburger-icon');
     const closeIcon = document.querySelector('.close-icon');
 
+    // Scroll shadow effect
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        navbar?.classList.add('shadow-sm');
+      } else {
+        navbar?.classList.remove('shadow-sm');
+      }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Mobile menu functionality
     if (mobileMenuButton && mobileMenu) {
       mobileMenuButton.addEventListener('click', function() {
         const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
