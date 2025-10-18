@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 const { content } = Astro.props;
+
+// Components
+import Navigation from "@/components/Navigation.astro";
 ---
 
 <html lang="en">
@@ -17,6 +20,7 @@ const { content } = Astro.props;
     <title>{content.title}</title>
   </head>
   <body>
+    <Navigation />
     <slot />
   </body>
 </html>

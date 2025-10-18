@@ -1,19 +1,9 @@
 ---
 
-import "../styles/global.css";
+import MainLayout from "@/layouts/main.astro";
 
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro + TailwindCSS</title>
-  </head>
-
-  <body class="font-body">
+<MainLayout content={{ title: "Home" }}>
     <h1>Work in progress!</h1>
-  </body>
-</html>
+</MainLayout>
