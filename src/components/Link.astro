@@ -32,15 +32,15 @@ const variants = {
   outlined:
     "bg-transparent flex items-center text-primary border border-primary rounded-xl btn-outlined",
   ghostPrimary: {
-    dark: "bg-transparent flex items-center justify-center gap-2 text-mob-p lg:text-p btn-ghost [&_svg]:fill-primary [&_.iconBg]:bg-secondary [&_.iconBg]:p-2 [&_.iconBg]:rounded-full",
+    dark: "bg-transparent flex items-center justify-center gap-2 text-mob-p lg:text-p btn-ghost [&_svg]:fill-primary [&_.iconBg]:bg-secondary [&_.iconBg]:p-2 [&_.iconBg]:rounded-full cursor-pointer cursor-pointer",
     white:
-      "bg-transparent flex items-center justify-center gap-2 text-mob-p lg:text-p btn-ghost fill-primary [&_svg]:bg-white [&_svg]:p-4 [&_svg]:rounded-full",
+      "bg-transparent flex items-center justify-center gap-2 text-mob-p lg:text-p btn-ghost [&_svg]:fill-primary [&_.iconBg]:bg-white [&_.iconBg]:p-2 [&_.iconBg]:rounded-full cursor-pointer",
   },
   ghostSecondary: {
-    main: "bg-transparent flex items-center justify-center flex-row-reverse text-secondary [&_svg]:fill-secondary btn-ghost",
-    dark: "bg-transparent flex items-center justify-center flex-row-reverse text-primary [&_svg]:fill-primary btn-ghost",
+    main: "bg-transparent flex gap-2 items-center justify-center flex-row-reverse text-secondary [&_svg]:fill-secondary btn-ghost cursor-pointer",
+    dark: "bg-transparent flex gap-2 items-center justify-center flex-row-reverse text-primary [&_svg]:fill-primary btn-ghost cursor-pointer",
     white:
-      "bg-transparent flex items-center justify-center flex-row-reverse text-white [&_svg]:fill-white btn-ghost",
+      "bg-transparent flex gap-2 items-center justify-center flex-row-reverse text-white [&_svg]:fill-white btn-ghost cursor-pointer",
   },
 };
 
@@ -52,7 +52,7 @@ const sizes = {
 const variantsClasses =
   variant === "default" || variant === "secondary" || variant === "outlined"
     ? variants[variant]
-    : variants[variant][color];
+    : variants[variant][color as keyof typeof variants[typeof variant]];
 ---
 
 <a class={cn(variantsClasses, sizes[size], className)} {...attrs}>
