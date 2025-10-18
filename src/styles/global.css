@@ -56,8 +56,6 @@
 }
 @utility btn-default {
   cursor: pointer;
-  display: block;
-  overflow: hidden;
   transition: all 0.3s ease;
   
   background: linear-gradient(to right, var(--cl-secondary) 50%, var(--cl-primary) 50%);
