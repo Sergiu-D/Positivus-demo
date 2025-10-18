@@ -1,0 +1,14 @@
+---
+import Text from "@/components/ui/Text.astro";
+
+const { title, paragraph } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row gap-8 md:gap-10">
+    <Text variant="h2" highlight="green">
+        {title}
+    </Text>
+    <Text variant="p" class="w-full xl:w-1/2">
+        {paragraph}
+    </Text>
+</div>
