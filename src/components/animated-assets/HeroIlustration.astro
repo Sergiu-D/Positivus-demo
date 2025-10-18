@@ -1,9 +1,9 @@
 ---
-import "@/styles/global.css";
 import HeroSvg from "@/assets/Hero.svg";
+const {height,width} = Astro.props;
 ---
 
-<HeroSvg />
+<HeroSvg height={height} width={width} />
 
 <script>
   import { animate, inView } from "motion";
