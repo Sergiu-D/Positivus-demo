@@ -52,16 +52,30 @@ const sizes = {
 const variantsClasses =
   variant === "default" || variant === "secondary" || variant === "outlined"
     ? variants[variant]
-    : variants[variant][color as keyof typeof variants[typeof variant]];
+    : variants[variant][color as keyof (typeof variants)[typeof variant]];
 ---
 
-<a class={cn(variantsClasses, sizes[size], className)} {...attrs}>
+<a class={cn(variantsClasses, sizes[size], className, "link")} {...attrs}>
   {
     (variant === "ghostPrimary" || variant === "ghostSecondary") && (
       <div class="iconBg">
-        <ArrowIcon class="w-4 h-4" />
+        <ArrowIcon class="w-4 h-4 icon" />
       </div>
     )
   }
   <slot />
 </a>
+
+<script>
+  import { animate, hover } from "motion";
+
+  hover(".link", (element) => {
+    const icon = element.querySelector(".icon");
+    
+    if (!icon) return;
+
+    animate(icon, { scale: 1.3 });
+
+    return () => animate(icon, { scale: 1 });
+  });
+</script>
