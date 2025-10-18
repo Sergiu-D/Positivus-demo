@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="h-screen">
+    <div class="flex h-screen">
+      <div
+        class="flex items-center justify-center flex-1 [&_a]:underline bg-secondary/20 border-r border-r-secondary"
+      >
+        <div class="flex flex-col justify-center gap-4">
+          <a href="/dev/ui">UI</a>
+          <a href="/dev/components">Components</a>
+          <a href="/dev/animated-assets">Animated Assets</a>
+        </div>
+      </div>
+      <div class="overflow-y-auto flex-7">
+        <h1 class="text-h2 font-bold text-center block mb-10">{title}</h1>
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>
