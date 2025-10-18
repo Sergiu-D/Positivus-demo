@@ -1,0 +1,90 @@
+---
+import SectionHeader from "@/components/SectionHeader.astro";
+import Text from "@/components/ui/Text.astro";
+import Wrapper from "@/components/ui/Wrapper.astro";
+import Link from "@/components/ui/Link.astro";
+
+type CaseStudy = {
+  text: string;
+  link: {
+    href: string;
+    text: string;
+    variant:
+      | "default"
+      | "secondary"
+      | "outlined"
+      | "ghostPrimary"
+      | "ghostSecondary";
+
+    color: "dark" | "white" | "main";
+  };
+}[];
+
+const caseStudies: CaseStudy = [
+  {
+    text: "For a local restaurant, we implemented a targeted PPC campaign that resulted in a 50% increase in website traffic and a 25% increase in sales.",
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostSecondary",
+      color: "main",
+    },
+  },
+  {
+    text: "For a B2B software company, we developed an SEO strategy that resulted in a first page ranking for key keywords and a 200% increase in organic traffic.",
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostSecondary",
+      color: "main",
+    },
+  },
+  {
+    text: "For a national retail chain, we created a social media marketing campaign that increased followers by 25% and generated a 20% increase in online sales.",
+    link: {
+      href: "#",
+      text: "Learn more",
+      variant: "ghostSecondary",
+      color: "main",
+    },
+  },
+];
+---
+
+<section class="flex flex-col gap-10">
+  <SectionHeader
+    title="Case Studies"
+    paragraph="Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies"
+  />
+  <Wrapper variant="dark" class="flex gap-10">
+    {
+      caseStudies.map((caseStudy, index) => {
+        console.log(
+          "caseStudies.length !== (index) ",
+          caseStudies.length - 1 !== index,
+          "caseStudies.length ",
+          caseStudies.length,
+          "index ",
+          index
+        );
+        return (
+          <>
+            <div class="flex flex-col justify-center items-center gap-4">
+              <Text variant="p">{caseStudy.text}</Text>
+              <Link
+                href={caseStudy.link.href}
+                variant={caseStudy.link.variant}
+                color={caseStudy.link.color}
+              >
+                {caseStudy.link.text}
+              </Link>
+            </div>
+            {caseStudies.length !== index + 1 && (
+              <div class="w-[1px] h-auto bg-white" />
+            )}
+          </>
+        );
+      })
+    }
+  </Wrapper>
+</section>
